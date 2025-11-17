@@ -22,29 +22,29 @@ export function SheetDemo() {
         <Menu size={35} />
       </SheetTrigger>
       <SheetContent
-        side="right"
+        side="left"
       >
        
        <ul className='gap-8 flex flex-col py-33 pl-5'>
-            <li><Link href="" className='text-3xl hover:underline font-bold'> About me </Link></li>
-            <li><Link href="" className='text-3xl hover:underline font-bold'> works</Link></li>
-            <li><Link href="" className='text-3xl hover:underline font-bold'> Connect</Link></li>
+            <li><Link href="" className='text-[22px] hover:underline font-bold'> works</Link></li>
+            <li><Link href="" className='text-[22px] hover:underline font-bold'> About me </Link></li>
+            <li><Link href="" className='text-[22px] hover:underline font-bold'> Connect</Link></li>
         </ul>
 
-        <Link href="" className='hidden md:flex items-center gap-2 text-lg'> 
+        <Link href="" className='hidden md:flex items-center gap-2 text-sm'> 
             Contact 
         </Link>
 
         <SheetFooter>
              <ul className='gap-5 flex'>
-                <li><Link href="" className='text-lg hover:underline'><span>[</span> Instagram <span>]</span></Link></li>
-                <li><Link href="" className='text-lg hover:underline'><span>[</span> Twitter <span>]</span></Link></li>
-                <li><Link href="" className='text-lg hover:underline'><span>[</span> Github <span>]</span></Link></li>
+                <li><Link href="" className='text-sm hover:underline'><span>[</span> Instagram <span>]</span></Link></li>
+                <li><Link href="" className='text-sm hover:underline'><span>[</span> Twitter <span>]</span></Link></li>
+                <li><Link href="" className='text-sm hover:underline'><span>[</span> Github <span>]</span></Link></li>
             </ul>
-          <SheetClose asChild className="mt-8">
+          <SheetClose asChild className="mt-4">
             <h2 className="text-center flex-col flex gap-2">
-               <span className="text-lg font-bold">+2348113239808</span>
-                <span className="text-2xl font-bold">jefftech108@gmail.com</span>
+               <span className="text-sm font-bold">+2348113239808</span>
+                <span className="text-lg font-bold">jefftech108@gmail.com</span>
             </h2>   
           </SheetClose>
         </SheetFooter>

@@ -17,7 +17,7 @@ const Navbar = () => {
           Jefferson
         </Link>
 
-        <ul className="hidden gap-12 md:flex ">
+        <ul className="hidden gap-12 lg:flex ">
           <li>
             <Link href="" className="text-lg hover:underline">
               <span></span> About me <span></span>
@@ -35,12 +35,15 @@ const Navbar = () => {
           </li>
         </ul>
 
-        <Link href="" className="hidden md:flex font-bold wider underline items-center gap-2 text-lg">
+        <Link
+          href=""
+          className="hidden lg:flex font-bold wider underline items-center gap-2 text-lg"
+        >
           Contact
           <ArrowUpRight className="w-6 h-6" />
         </Link>
 
-        <div className="flex md:hidden">
+        <div className="flex lg:hidden">
           <SheetDemo />
         </div>
       </div>

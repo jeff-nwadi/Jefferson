@@ -10,7 +10,7 @@ export const HeroSection = () => {
         <h2 className="font-extrabold text-4xl md:text-6xl lg:text-9xl cta-text wider ">
           Software Developer
         </h2>
-        <h3 className="md:text-center md:text-sm flex flex-col text-[8px]">
+        <h3 className="md:text-center md:text-sm flex flex-col text-[8px] lg:text-lg">
           <span>
             I craft memorable web experiences for brands of all sizes,
           </span>

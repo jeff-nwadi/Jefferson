@@ -15,9 +15,9 @@ const Navbar = () => {
       <div className="flex justify-between px-3 md:px-6 lg:px-16 py-8 items-center">
         <motion.div
           layout
-          animate={{ opacity: [0, 1, 1], y: [10, 10, 0] }}
+           animate={{ opacity: [0, 1, 1], y: [-10, -10, -0] }}
           transition={{
-            duration: 0.1,
+            duration: 0.4,
             ease: 'circInOut',
             delay: 0.05 + 0.5,
             times: [0, 0.2, 1],
@@ -38,7 +38,15 @@ const Navbar = () => {
           </Link>
         </motion.div>
 
-        <ul className="hidden gap-12 lg:flex">
+        <motion.ul 
+            animate={{ opacity: [0, 1, 1], y: [-10, -10, -0] }}
+          transition={{
+            duration: 0.3,
+            ease: 'circInOut',
+            delay: 0.7,
+            times: [0, 0.2, 1],
+          }}
+        className="hidden gap-12 lg:flex">
           <li>
             <Link href="" className="text-lg">
               <LetterSwapForward label="About me" reverse={true} />
@@ -54,7 +62,18 @@ const Navbar = () => {
               <LetterSwapForward label="connect" reverse={true} />
             </Link>
           </li>
-        </ul>
+        </motion.ul>
+
+        <motion.div
+          layout
+          animate={{ opacity: [0, 1, 1], y: [-10, -10, -0] }}
+          transition={{
+            duration: 0.9,
+            ease: 'circInOut',
+            delay: 0.4,
+            times: [0, 0.4, 1],
+          }}
+          >
         <GoesOutComesInUnderline direction="left">
           <Link
             href=""
@@ -64,6 +83,7 @@ const Navbar = () => {
             <ArrowUpRight className="w-6 h-6" />
           </Link>
         </GoesOutComesInUnderline>
+        </motion.div>
         <div className="flex lg:hidden">
           <SheetDemo />
         </div>

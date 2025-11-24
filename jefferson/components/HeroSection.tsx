@@ -61,7 +61,7 @@ export const HeroSection = () => {
         </div>
       </main>
 
-      <section className="px-16">
+      <section className="md:px-16 px-8">
         <motion.div 
             animate={{ opacity: [0, 1, 1], x: [-10, -10, -0] }}
             transition={{

@@ -47,9 +47,10 @@ body {
   font-family: var(--font-Spline-Sans-Mono);
 }
 
-.logo{
+.logo,.cta-text{
   font-family: var(--font-Sofia-Sans-Condensed);
 }
+
 
 :root {
   --radius: 0.625rem;

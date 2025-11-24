@@ -19,7 +19,7 @@ export function SheetDemo() {
   return (
     <Sheet>
       <SheetTrigger asChild className="cursor-pointer">
-        <Menu size={35} />
+        <Menu size={30} />
       </SheetTrigger>
       <SheetContent side="left">
         <ul className="gap-8 flex flex-col py-33 pl-5">

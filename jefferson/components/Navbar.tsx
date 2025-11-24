@@ -10,7 +10,7 @@ const Navbar = () => {
       <div className="flex justify-between px-3 md:px-6 lg:px-16 py-8 items-center">
         <Link
           href=""
-          className="gap-0 flex flex-col logo leading-7 font-extrabold text-3xl"
+          className="gap-0 flex flex-col logo leading-7 font-extrabold text-xl md:text-2xl lg:text-3xl "
         >
           Nwadi
           <br />

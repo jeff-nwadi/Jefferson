@@ -7,7 +7,7 @@ import { SheetDemo } from '../components/HamburgerMenu';
 const Navbar = () => {
   return (
     <main>
-      <div className="flex justify-between px-6 lg:px-16 py-8 items-center">
+      <div className="flex justify-between px-3 md:px-6 lg:px-16 py-8 items-center">
         <Link
           href=""
           className="gap-0 flex flex-col logo leading-7 font-extrabold text-3xl"

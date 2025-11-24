@@ -10,24 +10,24 @@ import ScrambleHover from './fancy/text/scramble-hover';
 export const HeroSection = () => {
   return (
     <>
-      <main className="py-28 flex justify-center items-center ">
+      <main className="py-28 flex justify-center items-center h-[70vh]">
         <div className="">
           <h2 className="flex flex-col text-center md:items-center md:gap-4 gap-2 lg:mb-4 mb-2">
             <motion.span
-              initial={{ opacity: 0, y: -10 }}
+              initial={{ opacity: [0, 1, 1], y: [-10, -10, -0] }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
                 duration: 0.6,
               }}
               className="text-[12px] lg:text-xl text-gray-500"
             >
-              I'm a
+             Hi👋, I'm a
             </motion.span>
             <motion.span
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{
-                duration: 0.8,
+                duration: 0.7,
                 delay: 0.5,
                 ease: [0, 0.71, 0.2, 1.01],
               }}
@@ -63,7 +63,7 @@ export const HeroSection = () => {
 
       <section className="md:px-16 px-8">
         <motion.div 
-            animate={{ opacity: [0, 1, 1], x: [-10, -10, -0] }}
+            animate={{ opacity: [0, 0, 1], x: [-10, -10, -0] }}
             transition={{
               duration: 0.9,
               ease: 'circInOut',

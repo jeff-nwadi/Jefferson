@@ -70,11 +70,11 @@ export const HeroSection = () => {
             }}
         >
           <Link href="">
-            <span className="flex gap-2 text-gray-500">
+            <span className="flex gap-2 text-gray-500 text-[12px] md:text-lg">
               Avaliable for collaboration
               <ArrowDownRight className="w-5 h-5" />
             </span>
-            <span className="font-medium pl-12 text-xl">
+            <span className="font-medium pl-12 md:text-xl">
               <ScrambleHover
                 text="jefftech10@gmail.com"
                 scrambleSpeed={50}

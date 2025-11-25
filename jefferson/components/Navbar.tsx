@@ -61,7 +61,7 @@ const Navbar = () => {
           </li>
           <li>
             <Link href="" className="text-lg">
-              <LetterSwapForward label="connect" reverse={true} />
+              <LetterSwapForward label="Services" reverse={true} />
             </Link>
           </li>
         </motion.ul>

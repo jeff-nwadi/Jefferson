@@ -35,7 +35,12 @@ export function SheetDemo() {
           </li>
           <li>
             <Link href="" className="text-lg hover:underline font-bold">
-              Connect
+              Services
+            </Link>
+          </li>
+           <li>
+            <Link href="" className="text-lg hover:underline font-bold">
+             Contact me
             </Link>
           </li>
         </ul>

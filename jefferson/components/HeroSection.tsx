@@ -21,7 +21,7 @@ export const HeroSection = () => {
               transition={{
                 duration: 0.6,
               }}
-              className="text-[12px] lg:text-xl text-gray-500"
+              className="text-xl text-gray-500"
             >
               Hi👋, <span className="text-red-500">I'm a</span>
             </motion.span>
@@ -56,7 +56,7 @@ export const HeroSection = () => {
             </div>
             <div className="md:hidden flex text-sm text-center w-sm items-center justify-center m-0">
               <span>
-                Designing memorable web experiences for brands, big and small.
+               I Design memorable web experiences for brands, big and small.
               </span>
             </div>
           </motion.h3>

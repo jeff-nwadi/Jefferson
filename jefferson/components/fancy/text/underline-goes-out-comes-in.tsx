@@ -126,7 +126,7 @@ const GoesOutComesInUnderline = ({
     >
       <span>{children}</span>
       <motion.span
-        className={cn("absolute bg-current", {
+        className={cn("absolute bg-white", {
           "left-0": direction === "left",
           "right-0": direction === "right",
         })}

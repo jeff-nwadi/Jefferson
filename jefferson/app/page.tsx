@@ -5,7 +5,7 @@ import { About } from "@/components/About";
 
 export default function Home() {
   return (
-    <main>
+    <main className="bg-black">
       <Navbar />
       <HeroSection />
       <About />

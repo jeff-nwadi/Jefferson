@@ -2,19 +2,23 @@
 
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { SheetDemo } from '../components/HamburgerMenu';
 import LetterSwapForward from './fancy/text/letter-swap-forward-anim';
 import GoesOutComesInUnderline from './fancy/text/underline-goes-out-comes-in';
 import ScrambleHover from './fancy/text/scramble-hover';
+import Letter3DSwap from './fancy/text/letter-3d-swap';
 
 const Navbar = () => {
   const model = 'Jefferson';
+  const [debug, setDebug] = useState(false);
   return (
-    <main>
+    <main className="bg-black">
       <div className="flex justify-between px-3 md:px-6 lg:px-16 py-8 items-center">
         <motion.div
           layout
+          initial={{ opacity: 0 }}
           animate={{ opacity: [0, 1, 1], y: [-10, -10, -0] }}
           transition={{
             duration: 0.4,
@@ -25,21 +29,25 @@ const Navbar = () => {
         >
           <Link
             href=""
-            className="gap-0 flex flex-col logo leading-7 font-extrabold text-xl md:text-2xl lg:text-3xl "
+            className="gap-0 flex text-white w-1/2  z-10 flex-col logo leading-7 font-abold text-xl md:text-2xl lg:text-3xl "
           >
-            <ScrambleHover
-              text='Nwadi Jefferson'
-              scrambleSpeed={50}
-              maxIterations={8}
-              useOriginalCharsOnly={true}
-              className="cursor-pointer"
+            <Letter3DSwap
+              rotateDirection="top"
+              staggerDuration={0.03}
+              staggerFrom="first"
+              transition={{
+                type: 'spring',
+                damping: 25,
+                stiffness: debug ? 50 : 160,
+              }}
             >
-              
-            </ScrambleHover>
+              Nwadi Jefferson
+            </Letter3DSwap>
           </Link>
         </motion.div>
 
         <motion.ul
+          initial={{ opacity: 0 }}
           animate={{ opacity: [0, 1, 1], y: [-10, -10, -0] }}
           transition={{
             duration: 0.3,
@@ -47,7 +55,7 @@ const Navbar = () => {
             delay: 0.7,
             times: [0, 0.2, 1],
           }}
-          className="hidden gap-12 lg:flex"
+          className="hidden gap-12 lg:flex text-white"
         >
           <li>
             <Link href="" className="text-lg">
@@ -68,6 +76,7 @@ const Navbar = () => {
 
         <motion.div
           layout
+          initial={{ opacity: 0 }}
           animate={{ opacity: [0, 1, 1], y: [-10, -10, -0] }}
           transition={{
             duration: 0.9,
@@ -79,14 +88,14 @@ const Navbar = () => {
           <GoesOutComesInUnderline direction="left">
             <Link
               href=""
-              className="hidden lg:flex font-bold wider text-lg items-center gap-2"
+              className="hidden text-white lg:flex font-bold wider z-10 text-lg items-center gap-2"
             >
               <span> Contact Me</span>
               <ArrowUpRight className="w-6 h-6" />
             </Link>
           </GoesOutComesInUnderline>
         </motion.div>
-        <div className="flex lg:hidden">
+        <div className="flex lg:hidden text-white">
           <SheetDemo />
         </div>
       </div>

@@ -84,7 +84,7 @@ export const HeroSection = () => {
   const path = generateSpiralPath(4);
 
   return (
-    <main className='bg-black h-screen mb-12'>
+    <main className="bg-black h-screen mb-12">
       <main className="py-24  flex justify-center  items-center flex-col lg:h-[75vh] z-10">
         <div className="z-10">
           <h2 className="flex flex-col text-center md:items-center md:gap-4 gap-2 lg:mb-4 mb-2">
@@ -149,46 +149,78 @@ export const HeroSection = () => {
           </Link>
         </motion.span>
 
-        <div className=''>
+        <div className="">
           <MarqueeAlongSvgPath
-          path={path}
-          viewBox="0 0 400 474"
-          baseVelocity={4}
-          showPath={false}
-          slowdownOnHover={true}
-          repeat={6}
-          enableRollingZIndex={false}
-          dragSensitivity={0.01}
-          className="absolute top-30 sm:top-38 overflow-hidden md:top-50 left-1/12 lg:left-1/4 -translate-x-1/2 md:-translate-x-1/3 w-[680px] sm:w-[500px] md:w-[500px] lg:w-[700px] xl:w-[500px] h-auto scale-100 sm:scale-90 md:scale-120 transform-3d"
-          cssVariableInterpolation={[
-            { property: 'opacity', from: 0, to: 1.5 },
-            { property: 'scale', from: 0.1, to: 1 },
-          ]}
-          grabCursor
-        >
-          {imgs.map((img, i) => (
-            <a
-              href={img.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="pointer-events-auto"
-            >
-              <div
-                key={i}
-                className="w-10 sm:w-12 md:w-14 lg:w-16 h-full cursor-pointer transform-3d hover:rotate-y-0 duration-300 ease-in-out hover:rotate-x-0 perspective-midrange -rotate-x-35 rotate-y-35 hover:scale-200"
+            path={path}
+            viewBox="0 0 400 474"
+            baseVelocity={4}
+            showPath={false}
+            slowdownOnHover={true}
+            repeat={6}
+            enableRollingZIndex={false}
+            dragSensitivity={0.01}
+            className="absolute 
+            top-30 
+            sm:top-38 
+            overflow-hidden 
+            md:top-50 
+            left-1/12 
+            lg:left-1/4 
+            -translate-x-1/2 
+            md:-translate-x-1/3 
+            w-[400px] 
+            sm:w-[500px] 
+            md:w-[500px] 
+            lg:w-[700px] 
+            xl:w-[500px] 
+            h-auto 
+            scale-100 
+            sm:scale-90 
+            md:scale-120 
+            transform-3d"
+            cssVariableInterpolation={[
+              { property: 'opacity', from: 0, to: 1.5 },
+              { property: 'scale', from: 0.1, to: 1 },
+            ]}
+            grabCursor
+          >
+            {imgs.map((img, i) => (
+              <a
+                href={img.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pointer-events-auto"
               >
-                <img
-                  src={img.src}
-                  alt={`Example ${i}`}
-                  className="w-full h-full object-cover"
-                  draggable={false}
-                />
-              </div>
-            </a>
-          ))}
-        </MarqueeAlongSvgPath>
+                <div
+                  key={i}
+                  className="
+                  w-10 
+                  sm:w-12 
+                  md:w-14 
+                  lg:w-16 
+                  h-full 
+                  cursor-pointer 
+                  transform-3d 
+                  hover:rotate-y-0 
+                  duration-300 
+                  ease-in-out 
+                  hover:rotate-x-0 
+                  perspective-midrange 
+                  -rotate-x-35 
+                  rotate-y-35 
+                  hover:scale-200"
+                >
+                  <img
+                    src={img.src}
+                    alt={`Example ${i}`}
+                    className="w-full h-full object-cover"
+                    draggable={false}
+                  />
+                </div>
+              </a>
+            ))}
+          </MarqueeAlongSvgPath>
         </div>
-        
       </main>
 
       <section className="md:px-16 px-8 mb-44 relative">
@@ -198,7 +230,7 @@ export const HeroSection = () => {
             duration: 0.9,
             ease: 'circInOut',
           }}
-          className='absolute right-18'
+          className="absolute right-18"
         >
           <Link href="">
             <span className="flex gap-2 text-gray-500 items-center text-[12px] md:text-lg">

@@ -22,7 +22,7 @@ export function SheetDemo() {
         <Menu size={30} />
       </SheetTrigger>
       <SheetContent side="left">
-        <ul className="gap-8 flex flex-col py-33 pl-5">
+        <ul className="gap-8 flex flex-col py-33 pl-5 text-white">
           <li>
             <Link href="" className="text-lg hover:underline font-bold">
               works
@@ -46,7 +46,7 @@ export function SheetDemo() {
         </ul>
 
         <div>
-          <ul className="gap-3 flex pl-5">
+          <ul className="gap-3 flex pl-5 text-white">
             <li>
               <Link href="" className="text-sm hover:underline">
                 <span></span> Instagram <span></span>

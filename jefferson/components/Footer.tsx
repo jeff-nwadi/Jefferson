@@ -1,8 +1,8 @@
-import React from "react"
+import React from 'react'
 
-const Preview: React.FC = () => {
+export const Footer = () => {
   return (
-    <div className="w-full bg-[#efefef] items-center justify-center h-full overflow-auto">
+     <div className="w-full bg-[#efefef] items-center justify-center h-full overflow-auto">
       {/* add relative positioning to the main conent */}
       <div className="relative w-dvw h-dvh z-10 text-2xl md:text-7xl font-bold uppercase flex justify-center items-center bg-[#ff5941] text-white whitespace-pre">
         Scroll down ↓
@@ -31,5 +31,3 @@ const Preview: React.FC = () => {
     </div>
   )
 }
-
-export default Preview

@@ -19,12 +19,6 @@ gsap.registerPlugin(ScrollTrigger)
 
 const works = [
     {
-        title: "ARTGIGS - Marketplace for Art",
-        image: Artgigs,
-        color: "bg-[#E6F4F1]",
-        link: "#"
-    },
-    {
         title: "PLOTLINE - Storytelling Platform",
         image: Plotline,
         color: "bg-[#F5E6E8]",

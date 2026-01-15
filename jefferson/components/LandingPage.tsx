@@ -1,7 +1,7 @@
 "use client"
 import React, { useRef } from 'react'
 import Image from 'next/image'
-import Will from '../images/will.jpg'
+import Jeff from '../images/jeff.jpg'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 
@@ -35,10 +35,10 @@ export const LandingPage = () => {
 
   return (
     <div ref={containerRef} className='flex flex-col justify-center items-center py-10 md:py-20 pb-20 md:pb-40 px-4'>
-        <div className="landing-img">
-            <Image src={Will} alt="Will" width={100} height={100} className='rounded-full w-20 h-20 md:w-[100px] md:h-[100px]'/>
+        <div className="landing-img border-2 border-gray-400 rounded-full p-2">
+            <Image src={Jeff} alt="jeff" width={100} height={100} className='rounded-full w-20 h-20 md:w-[100px] md:h-[100px]'/>
         </div>
-        <div className='text-center py-5 heading-text text-2xl md:text-4xl tracking-wider leading-8 md:leading-12 landing-text'>
+        <div className='text-center py-5 heading-text text-xl md:text-4xl tracking-wider leading-8 md:leading-12 landing-text'>
             <h1>Hello, I&apos;m Jefferson</h1>
             <h1 className='max-w-4xl text-xl md:text-4xl mt-2'>a Frontend Developer crafting high-performance web applications by bridging design and scalable code.</h1>   
         </div> 

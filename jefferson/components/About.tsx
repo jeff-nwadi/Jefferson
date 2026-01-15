@@ -60,7 +60,7 @@ export const About = () => {
                     </p>
                 </div>
                 <div className='flex flex-col gap-6 w-full md:w-auto items-center'>
-                    <div className='stat-card bg-white text-black h-auto min-h-[99px] w-full max-w-[330px] md:w-[330px] -rotate-3 md:-rotate-6 heading-text rounded-lg p-5 flex justify-between items-center'>
+                    <div className='stat-card bg-white text-black h-auto min-h-[99px] w-full max-w-[330px] md:w-[330px] -rotate-6 md:-rotate-6 heading-text rounded-lg p-5 flex justify-between items-center'>
                         <span className='text-[#6982FF] text-xl md:text-2xl tracking-wider'>
                                 Frontend 
                         </span>
@@ -68,7 +68,7 @@ export const About = () => {
                             86%
                         </span>
                     </div>
-                    <div className='stat-card bg-white text-black h-auto min-h-[99px] w-full max-w-[330px] md:w-[330px] rotate-3 md:rotate-6 heading-text rounded-lg p-5 flex justify-between items-center'>
+                    <div className='stat-card bg-white text-black h-auto min-h-[99px] w-full max-w-[330px] md:w-[330px] rotate-6 md:rotate-6 heading-text rounded-lg p-5 flex justify-between items-center'>
                         <span className='text-[#00D74C] text-xl md:text-2xl tracking-wider'>
                             Backend 
                         </span>
@@ -76,7 +76,7 @@ export const About = () => {
                             65%
                         </span>
                     </div>
-                    <div className='stat-card bg-white text-black h-auto min-h-[99px] w-full max-w-[330px] md:w-[330px] -rotate-3 md:-rotate-6 heading-text rounded-lg p-5 flex justify-between items-center'>
+                    <div className='stat-card bg-white text-black h-auto min-h-[99px] w-full max-w-[330px] md:w-[330px] -rotate-6 md:-rotate-6 heading-text rounded-lg p-5 flex justify-between items-center'>
                         <span className='text-[#D70032] text-xl md:text-2xl tracking-wider'>
                             UI/UX Design
                         </span>

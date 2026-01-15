@@ -2,7 +2,7 @@ import React from 'react'
 
 export const About = () => {
   return (
-    <div className='flex justify-center items-center pb-20'>
+    <div id='about' className='flex justify-center items-center pb-20'>
         <div className='bg-[#8B5CF6] w-full max-w-[1000px] min-h-[600px] h-auto rounded-lg mx-4 md:mx-0'>
             <div className='p-8 flex flex-col md:flex-row justify-between items-center gap-12 md:gap-24 py-16'>
                 <div className='sub-head-text w-full md:w-1/2'>

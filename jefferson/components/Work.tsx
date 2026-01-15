@@ -64,11 +64,11 @@ const works = [
 
 export const Work = () => {
   return (
-    <div className='flex flex-col justify-center items-center py-10 md:py-20'>
+    <div id='work' className='flex flex-col justify-center items-center py-10 md:py-20'>
         <div className='max-w-[1200px] w-full px-4 md:px-8'>
             <div className='flex items-center justify-center gap-3 md:gap-4 mb-10 md:mb-16'>
-                <div className='p-2 md:p-3 bg-white rounded-xl shadow-sm border border-gray-100'>
-                    <Briefcase className='w-6 h-6 md:w-8 md:h-8 text-black' />
+                <div className='p-2 md:p-3 bg-white rounded-xl shadow-sm border border-gray-100 '>
+                    <Briefcase className='w-6 h-6 md:w-8 md:h-8 text-black delay-300 animate-[spin_10s_linear_infinite]' />
                 </div>
                 <h1 className='text-3xl md:text-4xl font-black text-gray-900 heading-text tracking-wider'>WORKS</h1>
             </div>

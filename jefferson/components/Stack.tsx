@@ -44,7 +44,7 @@ const stackData = [
 
 export const Stack = () => {
   return (
-    <div className='flex flex-col justify-center items-center py-10 md:py-24 pb-20 md:pb-40 px-4'>
+    <div id='stack' className='flex flex-col justify-center items-center py-10 md:py-24 pb-20 md:pb-40 px-4'>
         <div className='flex items-center gap-3 pb-8 md:pb-10'>
             <div className='p-2 md:p-3 bg-white rounded-xl shadow-sm border border-gray-100'>
                  <Layers className='w-6 h-6 md:w-8 md:h-8 text-black delay-300 animate-[spin_10s_linear_infinite]' />

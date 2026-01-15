@@ -1,18 +1,14 @@
-
-import Navbar from "../components/Navbar"
-import { HeroSection } from "@/components/HeroSection";
 import { About } from "@/components/About";
-import { Works } from "@/components/Works";
-import { Footer } from "@/components/Footer"
+import { LandingPage } from "@/components/LandingPage";
+import { Navbar } from "@/components/Navbar";
+
 
 export default function Home() {
   return (
-    <main className="bg-black">
+    <main className="">
       <Navbar />
-      <HeroSection />
-      <About />
-      <Works />
-      {/* <Footer /> */}
+     <LandingPage />
+     <About />
     </main>
   );
 }

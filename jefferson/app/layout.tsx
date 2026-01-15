@@ -1,44 +1,91 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { Bebas_Neue } from "next/font/google";
 import "./globals.css";
-import { DM_Mono } from "next/font/google";
-import { Sofia_Sans_Condensed } from "next/font/google";
-import { Spline_Sans_Mono } from "next/font/google";
+import localFont from "next/font/local";
+import { Playfair_Display } from "next/font/google";
+import { Kameron } from "next/font/google";
+import { Gasoek_One } from "next/font/google";
 
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
-
-const SofiaSansCondensed = Sofia_Sans_Condensed({
-  variable: "--font-Sofia-Sans-Condensed",
-  subsets: ["latin"],
-    weight: "800",
+const playfairDisplay = Playfair_Display({
+    subsets: ["latin"],
+    weight: ["400", "500", "600", "700", "800", "900"],
+    variable: "--font-playfair-display",
+})
+const kameron = Kameron({
+    subsets: ["latin"],
+    weight: ["400", "500", "600", "700"],
+    variable: "--font-kameron",
+})
+const gasoekOne = Gasoek_One({
+    subsets: ["latin"],
+    weight: ["400"],
+    variable: "--font-gasoek-one",
 })
 
-const SplineSansMono = Spline_Sans_Mono({
-  variable: "--font-Spline-Sans-Mono",
-  subsets: ["latin"],
-  weight: "400"
+const satoshi = localFont({
+  src: [
+    {
+      path: "../public/fonts/Satoshi-Light.otf",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/Satoshi-LightItalic.otf",
+      weight: "300",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/Satoshi-Regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/Satoshi-Italic.otf",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/Satoshi-Medium.otf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/Satoshi-MediumItalic.otf",
+      weight: "500",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/Satoshi-Bold.otf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/Satoshi-BoldItalic.otf",
+      weight: "700",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/Satoshi-Black.otf",
+      weight: "900",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/Satoshi-BlackItalic.otf",
+      weight: "900",
+      style: "italic",
+    },
+  ],
+  variable: "--font-satoshi",
+});
+
+const BespokeSans = localFont({
+    src: "../public/fonts/BespokeSans-Regular.otf",
+    weight: "700",
+    style: "normal",
+
+
+
+    variable: "--font-bespoke-sans",
 })
-
-const bebasNeue = Bebas_Neue({
-  variable: "--font-bebas-neue",
-  subsets: ["latin"],
-  weight: "400",
-});
-
-const dmMono = DM_Mono({
-  variable: "--font-dm-mono",
-  subsets: ["latin"],
-  weight: ["400"],
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -53,7 +100,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={` ${dmMono.variable} ${bebasNeue.variable} ${SofiaSansCondensed.variable} ${SplineSansMono.variable} antialiased`}
+        className={` ${satoshi.variable} ${BespokeSans.variable} ${playfairDisplay.variable} ${gasoekOne.variable} ${kameron.variable} antialiased bg-[#EFEFEF]`}
       >
         {children}
       </body>

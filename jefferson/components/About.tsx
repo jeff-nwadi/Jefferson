@@ -3,6 +3,7 @@ import React, { useRef } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { Monitor, Server, Paintbrush } from 'lucide-react'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -47,7 +48,7 @@ export const About = () => {
         <div className='about-card bg-[#8B5CF6] w-full max-w-[1000px] min-h-[600px] h-auto rounded-lg mx-4 md:mx-0'>
             <div className='p-8 flex flex-col md:flex-row justify-between items-center gap-12 md:gap-24 py-16'>
                 <div className='sub-head-text w-full md:w-1/2 about-text'>
-                    <h1 className='uppercase text-3xl md:text-4xl mb-6 tracking-wide leading-12 text-white heading-text text-center md:text-left'>About me</h1>
+                    <h1 className='uppercase text-3xl md:text-5xl mb-6 tracking-wider font-extrabold  leading-12 text-white heading-text text-center md:text-left'>About me</h1>
                     <p className='text-white w-full text-base md:text-lg text-center md:text-left'>
                         <span className='mb-6 block'>
                             I specialize in building high-performance, responsive web applications. I’ve always been driven by the intersection of logic and creativity, which led me to focus on mastering Next.js and modern web standards.
@@ -61,28 +62,22 @@ export const About = () => {
                 </div>
                 <div className='flex flex-col gap-6 w-full md:w-auto items-center'>
                     <div className='stat-card bg-white text-black h-auto min-h-[99px] w-full max-w-[330px] md:w-[330px] -rotate-6 md:-rotate-6 heading-text rounded-lg p-5 flex justify-between items-center'>
-                        <span className='text-[#6982FF] text-xl md:text-2xl tracking-wider'>
+                        <span className='text-[#6982FF] text-xl md:text-2xl tracking-wider font-extrabold'>
                                 Frontend 
                         </span>
-                        <span className='text-[#6982FF] text-4xl md:text-5xl tracking-wider'>
-                            86%
-                        </span>
+                        <Monitor className='text-[#6982FF]' size={48} strokeWidth={1.5} />
                     </div>
                     <div className='stat-card bg-white text-black h-auto min-h-[99px] w-full max-w-[330px] md:w-[330px] rotate-6 md:rotate-6 heading-text rounded-lg p-5 flex justify-between items-center'>
-                        <span className='text-[#00D74C] text-xl md:text-2xl tracking-wider'>
+                        <span className='text-[#00D74C] text-xl md:text-2xl tracking-wider font-extrabold'>
                             Backend 
                         </span>
-                        <span className='text-[#00D74C] text-4xl md:text-5xl tracking-wider'>
-                            65%
-                        </span>
+                        <Server className='text-[#00D74C]' size={48} strokeWidth={1.5} />
                     </div>
                     <div className='stat-card bg-white text-black h-auto min-h-[99px] w-full max-w-[330px] md:w-[330px] -rotate-6 md:-rotate-6 heading-text rounded-lg p-5 flex justify-between items-center'>
-                        <span className='text-[#D70032] text-xl md:text-2xl tracking-wider'>
+                        <span className='text-[#D70032] text-xl md:text-2xl tracking-wider font-extrabold'>
                             UI/UX Design
                         </span>
-                        <span className='text-[#D70032] text-4xl md:text-5xl tracking-wider'>
-                            71%
-                        </span>
+                        <Paintbrush className='text-[#D70032]' size={48} strokeWidth={1.5} />
                     </div>
                 </div>
             </div>

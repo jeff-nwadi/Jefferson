@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import { Playfair_Display } from "next/font/google";
 import { Kameron } from "next/font/google";
 import { Gasoek_One } from "next/font/google";
+import { Bebas_Neue } from "next/font/google";
 
 const playfairDisplay = Playfair_Display({
     subsets: ["latin"],
@@ -19,6 +20,12 @@ const gasoekOne = Gasoek_One({
     subsets: ["latin"],
     weight: ["400"],
     variable: "--font-gasoek-one",
+})
+
+const BebasNeue = Bebas_Neue({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-bebas-neue"
 })
 
 const satoshi = localFont({
@@ -93,6 +100,7 @@ export const metadata: Metadata = {
 };
 
 import { Preloader } from "@/components/Preloader";
+import { ScrollToTop } from "@/components/ScrollToTop";
 
 // ... existing imports
 
@@ -104,9 +112,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={` ${satoshi.variable} ${BespokeSans.variable} ${playfairDisplay.variable} ${gasoekOne.variable} ${kameron.variable} antialiased bg-[#EFEFEF]`}
+        className={` ${satoshi.variable} ${BespokeSans.variable} ${BebasNeue.variable} ${gasoekOne.variable} ${kameron.variable} antialiased bg-[#EFEFEF]`}
       >
         <Preloader />
+        <ScrollToTop />
         {children}
       </body>
     </html>

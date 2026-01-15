@@ -108,7 +108,6 @@ export const Work = () => {
             
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
                 {works.map((work, index) => (
-                    // @ts-ignore
                     <div key={index} className='group work-item'>
                         <Link href={work.link} className='cursor-pointer block' target={work.link !== '#' ? '_blank' : '_self'}>
                             <div className={`rounded-3xl overflow-hidden aspect-square relative mb-6 ${work.color} transition-transform duration-300 group-hover:-translate-y-2`}>
@@ -124,13 +123,11 @@ export const Work = () => {
                                 {work.title}
                             </h3>
                         </Link>
-                        {/* @ts-ignore */}
                         {work.collaboration && (
                             <div className='mt-2 text-xs text-gray-500 font-medium tracking-wide sub-head-text'>
                                 {work.collaboration.text} <a href={work.collaboration.url} target="_blank" className='underline hover:text-black transition-colors'>{work.collaboration.name}</a>
                             </div>
                         )}
-                        {/* @ts-ignore */}
                         {work.status && (
                             <div className='mt-2 text-xs text-amber-600 font-bold tracking-wide sub-head-text uppercase'>
                                 • {work.status}

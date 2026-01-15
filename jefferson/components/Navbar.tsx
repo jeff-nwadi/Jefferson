@@ -12,6 +12,7 @@ export const Navbar = () => {
 
   const { contextSafe } = useGSAP({ scope: containerRef })
 
+  /* eslint-disable-next-line react-hooks/exhaustive-deps */
   const handleHover = contextSafe(() => {
     if (!isOpen) {
       gsap.to(buttonRef.current, {

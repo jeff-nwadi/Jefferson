@@ -1,4 +1,5 @@
-import React from 'react'
+"use client"
+import React, { useRef } from 'react'
 import { Briefcase } from 'lucide-react'
 import Image from 'next/image'
 import Artgigs from '../images/Artgigs.png'
@@ -7,8 +8,12 @@ import Vura from '../images/Vura.png'
 import Waveroom from '../images/Waveroom.png'
 import Yardage from '../images/Yardage.png'
 import Jockify from '../images/jockify.png'
-
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Link from 'next/link'
+
+gsap.registerPlugin(ScrollTrigger)
 
 // ... existing imports
 
@@ -63,10 +68,38 @@ const works = [
 ]
 
 export const Work = () => {
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 80%",
+        end: "bottom 20%",
+        toggleActions: "play none none reverse"
+      }
+    })
+
+    tl.from(".work-header", {
+      y: 30,
+      opacity: 0,
+      duration: 0.6,
+      ease: "power2.out"
+    })
+    .from(".work-item", {
+      y: 50,
+      opacity: 0,
+      stagger: 0.1,
+      duration: 0.8,
+      ease: "power2.out"
+    }, "-=0.3")
+
+  }, { scope: containerRef })
+
   return (
-    <div id='work' className='flex flex-col justify-center items-center py-10 md:py-20'>
+    <div id='work' ref={containerRef} className='flex flex-col justify-center items-center py-10 md:py-20'>
         <div className='max-w-[1200px] w-full px-4 md:px-8'>
-            <div className='flex items-center justify-center gap-3 md:gap-4 mb-10 md:mb-16'>
+            <div className='flex items-center justify-center gap-3 md:gap-4 mb-10 md:mb-16 work-header'>
                 <div className='p-2 md:p-3 bg-white rounded-xl shadow-sm border border-gray-100 '>
                     <Briefcase className='w-6 h-6 md:w-8 md:h-8 text-black delay-300 animate-[spin_10s_linear_infinite]' />
                 </div>
@@ -76,7 +109,7 @@ export const Work = () => {
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
                 {works.map((work, index) => (
                     // @ts-ignore
-                    <div key={index} className='group'>
+                    <div key={index} className='group work-item'>
                         <Link href={work.link} className='cursor-pointer block' target={work.link !== '#' ? '_blank' : '_self'}>
                             <div className={`rounded-3xl overflow-hidden aspect-square relative mb-6 ${work.color} transition-transform duration-300 group-hover:-translate-y-2`}>
                                 <div className='absolute inset-0 flex items-center justify-center p-8'>

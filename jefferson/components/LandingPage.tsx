@@ -9,7 +9,7 @@ export const LandingPage = () => {
   const containerRef = useRef<HTMLDivElement>(null)
 
   useGSAP(() => {
-    const tl = gsap.timeline()
+    const tl = gsap.timeline({ delay: 2.5 })
 
     tl.from(".landing-img", {
       scale: 0,

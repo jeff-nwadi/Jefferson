@@ -23,14 +23,14 @@ const works = [
         category: "Storytelling Platform",
         image: Plotline,
         link: "https://plotline-psi.vercel.app/",
-        year: "2024"
+        year: "2025"
     },
     {
         title: "Vura",
         category: "Virtual Frame Hanging",
         image: Vura,
         link: "https://vura-nine.vercel.app/",
-        year: "2023",
+        year: "2025",
         status: "Development"
     },
     {
@@ -38,21 +38,21 @@ const works = [
         category: "Social Playlist Sharing",
         image: Waveroom,
         link: "https://waveroom.vercel.app/",
-        year: "2023"
+        year: "2024"
     },
     {
         title: "Yardage",
         category: "E-commerce for Students",
         image: Yardage,
         link: "https://yardage-waitlist.vercel.app/",
-        year: "2023"
+        year: "2025"
     },
     {
         title: "Jockify",
         category: "AI Song Remixing",
         image: Jockify,
         link: "https://jockify.vercel.app/",
-        year: "2023"
+        year: "2025"
  }
 ]
 

@@ -53,14 +53,7 @@ const works = [
         image: Jockify,
         link: "https://jockify.vercel.app/",
         year: "2023"
-    },
-    {
-        title: "Artgigs",
-        category: "Freelance Marketplace",
-        image: Artgigs,
-        link: "#",
-        year: "2022"
-    }
+ }
 ]
 
 export const Work = () => {

@@ -60,9 +60,9 @@ export const LandingPage = () => {
   return (
     <div ref={containerRef} className='min-h-screen w-full flex flex-col justify-center items-center relative overflow-hidden pt-20 pb-10'>
         
-        {/* Background decorative elements - Reduced blur/opacity for better mobile performance */}
-        <div className="absolute top-1/4 -left-20 w-64 h-64 md:w-96 md:h-96 bg-primary/5 rounded-full blur-[60px] md:blur-[100px] pointer-events-none mix-blend-screen" />
-        <div className="absolute bottom-1/4 -right-20 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-primary/5 rounded-full blur-[80px] md:blur-[120px] pointer-events-none mix-blend-screen" />
+        {/* Background decorative elements - Hidden on mobile, visible on desktop */}
+        <div className="hidden md:block absolute top-1/4 -left-20 md:w-96 md:h-96 bg-primary/5 rounded-full md:blur-[100px] pointer-events-none mix-blend-screen" />
+        <div className="hidden md:block absolute bottom-1/4 -right-20 md:w-[500px] md:h-[500px] bg-primary/5 rounded-full md:blur-[120px] pointer-events-none mix-blend-screen" />
 
         <div className='relative z-10 flex flex-col items-center text-center w-full max-w-[95vw] md:max-w-[90vw]'>
             

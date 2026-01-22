@@ -9,7 +9,6 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { TransitionProvider } from "@/context/TransitionContext";
 import { TransitionOverlay } from "@/components/TransitionOverlay";
 import { SmoothScroll } from "@/components/SmoothScroll";
-import { LoaderProvider } from "@/context/LoaderContext";
 
 
 const playfairDisplay = Playfair_Display({
@@ -105,7 +104,6 @@ export const metadata: Metadata = {
   description: "Welcome to my portfolio. I'm Jefferson, a frontend developer passionate about crafting high-performance web applications.",
 };
 
-import { Preloader } from "@/components/Preloader";
 import { ScrollToTop } from "@/components/ScrollToTop";
 
 // ... existing imports
@@ -127,15 +125,12 @@ export default function RootLayout({
             forcedTheme="dark"
             disableTransitionOnChange
         >
-            <LoaderProvider>
-                <TransitionProvider>
-                    <SmoothScroll />
-                    <TransitionOverlay />
-                    <Preloader />
-                    <ScrollToTop />
-                    {children}
-                </TransitionProvider>
-            </LoaderProvider>
+            <TransitionProvider>
+                <SmoothScroll />
+                <TransitionOverlay />
+                <ScrollToTop />
+                {children}
+            </TransitionProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -6,6 +6,7 @@ import Jeff from '../images/jeff.jpg'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { ArrowDownRight } from 'lucide-react'
+import PixelTrail from '@/components/fancy/background/pixel-trail'
 
 
 export const LandingPage = () => {
@@ -15,7 +16,7 @@ export const LandingPage = () => {
   useGSAP(() => {
     // Standard robust animation sequence
     // Elements start visible in DOM, GSAP immediately handles the 'from' state
-    const tl = gsap.timeline({ delay: 2.2 }) // Delay to sync roughly with Preloader (0.8s + 0.5s + buffer)
+    const tl = gsap.timeline({ delay: 0.5 }) // Reduced delay as Preloader is removed
 
     tl.from([".hero-title", ".hero-image", ".hero-meta"], {
         y: 100,
@@ -60,6 +61,15 @@ export const LandingPage = () => {
   return (
     <div ref={containerRef} className='min-h-screen w-full flex flex-col justify-center items-center relative overflow-hidden pt-20 pb-10'>
         
+        {/* Pixel Trail Background - Desktop Only */}
+        <div className='hidden md:block absolute inset-0 z-0'>
+            <PixelTrail 
+                pixelSize={48} 
+                fadeDuration={600} 
+                pixelClassName="bg-white" 
+            />
+        </div>
+
         {/* Background decorative elements - Hidden on mobile, visible on desktop */}
         <div className="hidden md:block absolute top-1/4 -left-20 md:w-96 md:h-96 bg-primary/5 rounded-full md:blur-[100px] pointer-events-none mix-blend-screen" />
         <div className="hidden md:block absolute bottom-1/4 -right-20 md:w-[500px] md:h-[500px] bg-primary/5 rounded-full md:blur-[120px] pointer-events-none mix-blend-screen" />

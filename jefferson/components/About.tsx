@@ -3,7 +3,7 @@ import React, { useRef } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { Monitor, Server, Paintbrush } from 'lucide-react'
+import { Code2, Palette, Terminal } from 'lucide-react'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -14,72 +14,114 @@ export const About = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
-        start: "top 80%",
+        start: "top 70%",
         end: "bottom 20%",
         toggleActions: "play none none reverse"
       }
     })
 
-    tl.from(".about-card", {
-      opacity: 0,
+    tl.from(".about-title", {
       y: 100,
-      duration: 0.8,
+      opacity: 0,
+      duration: 1,
       ease: "power3.out"
     })
-    .from(".about-text", {
+    .from(".about-desc", {
+      y: 50,
       opacity: 0,
-      x: -50,
-      duration: 0.6,
+      stagger: 0.1,
+      duration: 0.8,
       ease: "power2.out"
-    }, "-=0.4")
-    .from(".stat-card", {
+    }, "-=0.5")
+    .from(".skill-block", {
+      y: 30,
       opacity: 0,
-      scale: 0.8,
-      rotation: -10,
       stagger: 0.1,
       duration: 0.6,
-      ease: "back.out(1.7)"
-    }, "-=0.2")
+      ease: "back.out(1.2)"
+    }, "-=0.3")
 
   }, { scope: containerRef })
 
   return (
-    <div id='about' ref={containerRef} className='flex justify-center items-center pb-20 overflow-hidden'>
-        <div className='about-card bg-[#8B5CF6] w-full max-w-[1000px] min-h-[600px] h-auto rounded-lg mx-4 md:mx-0'>
-            <div className='p-8 flex flex-col md:flex-row justify-between items-center gap-12 md:gap-24 py-16'>
-                <div className='sub-head-text w-full md:w-1/2 about-text'>
-                    <h1 className='uppercase text-3xl md:text-5xl mb-6 tracking-wider font-extrabold  leading-12 text-white heading-text text-center md:text-left'>About me</h1>
-                    <p className='text-white w-full text-base md:text-lg text-center md:text-left'>
-                        <span className='mb-6 block'>
-                            I specialize in building high-performance, responsive web applications. I’ve always been driven by the intersection of logic and creativity, which led me to focus on mastering Next.js and modern web standards.
-                        </span>
-                        <span className='mb-6 block'>
-                            <h1 className='text-xl tracking-wider leading-8 md:leading-12 mb-2'>My approach is simple:</h1> 
-                            I bridge the gap between elegant design and scalable code. I believe that a great digital product should not only look stunning but also be fast, accessible, and built to grow. Whether I’m developing a complex user interface or optimizing a site’s performance, I am committed to writing clean code that delivers a seamless user experience.
-                            I thrive on solving technical challenges and turning ambitious ideas into functional, pixel-perfect reality.
-                        </span>
-                    </p>
+    <div id='about' ref={containerRef} className='w-full py-24 md:py-40 bg-background text-foreground relative overflow-hidden'>
+        
+        {/* Background Text */}
+        <div className='absolute top-20 right-0 opacity-5 pointer-events-none select-none'>
+            <h1 className='text-[20vw] font-black heading-text leading-[0.8] tracking-in-expand'>
+                ABOUT
+            </h1>
+        </div>
+
+        <div className='max-w-[1400px] mx-auto px-6 md:px-12 relative z-10'>
+            <div className='flex flex-col lg:flex-row gap-20 items-start'>
+                
+                {/* Left Side: Editorial Typography */}
+                <div className='w-full lg:w-3/5'>
+                    <h2 className='about-title text-6xl md:text-8xl font-black mb-12 heading-text tracking-tight text-white'>
+                        CREATIVE <br />
+                        <span className='text-primary'>DEVELOPER</span>
+                    </h2>
+                    
+                    <div className='space-y-8 text-lg md:text-xl font-medium leading-relaxed opacity-90 text-zinc-300 sub-head-text pr-0 md:pr-10'>
+                        <p className='about-desc'>
+                            I am a designer-turned-developer who believes that code is the ultimate design tool. My passion lies in building digital products that look beautiful and perform flawlessly.
+                        </p>
+                        <p className='about-desc'>
+                            With a strong foundation in modern frontend architectures, I bridge the gap between creative vision and engineering reality. I don&apos;t just write code; I craft experiences that engage users and solve real-world problems.
+                        </p>
+                    </div>
+
+                    <div className='mt-16 grid grid-cols-2 md:grid-cols-3 gap-8'>
+                        {[
+                            { number: "3+", label: "Years of Experience" },
+                            { number: "12+", label: "Projects Completed" },
+                            { number: "100%", label: "Client Satisfaction" }
+                        ].map((stat, i) => (
+                            <div key={i} className='about-desc flex flex-col'>
+                                <span className='text-4xl md:text-5xl font-black text-primary heading-text'>{stat.number}</span>
+                                <span className='text-sm uppercase tracking-widest text-zinc-500 font-bold mt-2'>{stat.label}</span>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-                <div className='flex flex-col gap-6 w-full md:w-auto items-center'>
-                    <div className='stat-card bg-white text-black h-auto min-h-[99px] w-full max-w-[330px] md:w-[330px] -rotate-6 md:-rotate-6 heading-text rounded-lg p-5 flex justify-between items-center'>
-                        <span className='text-[#6982FF] text-xl md:text-2xl tracking-wider font-extrabold'>
-                                Frontend 
-                        </span>
-                        <Monitor className='text-[#6982FF]' size={48} strokeWidth={1.5} />
-                    </div>
-                    <div className='stat-card bg-white text-black h-auto min-h-[99px] w-full max-w-[330px] md:w-[330px] rotate-6 md:rotate-6 heading-text rounded-lg p-5 flex justify-between items-center'>
-                        <span className='text-[#00D74C] text-xl md:text-2xl tracking-wider font-extrabold'>
-                            Backend 
-                        </span>
-                        <Server className='text-[#00D74C]' size={48} strokeWidth={1.5} />
-                    </div>
-                    <div className='stat-card bg-white text-black h-auto min-h-[99px] w-full max-w-[330px] md:w-[330px] -rotate-6 md:-rotate-6 heading-text rounded-lg p-5 flex justify-between items-center'>
-                        <span className='text-[#D70032] text-xl md:text-2xl tracking-wider font-extrabold'>
-                            UI/UX Design
-                        </span>
-                        <Paintbrush className='text-[#D70032]' size={48} strokeWidth={1.5} />
-                    </div>
+
+                {/* Right Side: Skill Highlights */}
+                <div className='w-full lg:w-2/5 flex flex-col gap-6 mt-10 lg:mt-0'>
+                    {[
+                        { 
+                          icon: <Code2 className='w-6 h-6 text-black' />, 
+                          title: "Frontend Engineering", 
+                          desc: "React, Next.js, and TypeScript for scalable applications.",
+                          color: "bg-emerald-400"
+                        },
+                        { 
+                          icon: <Terminal className='w-6 h-6 text-black' />, 
+                          title: "Backend Integration", 
+                          desc: "Node.js, Postgres, and Serverless architectures.",
+                          color: "bg-orange-400"
+                        },
+                        { 
+                          icon: <Palette className='w-6 h-6 text-black' />, 
+                          title: "Interactive Design", 
+                          desc: "GSAP, Framer Motion, and WebGL for immersive feels.",
+                          color: "bg-purple-400"
+                        }
+                    ].map((skill, index) => (
+                        <div key={index} className='skill-block md:ml-auto w-full md:max-w-md bg-zinc-900 border border-zinc-800 p-6 rounded-2xl hover:border-zinc-600 transition-colors group'>
+                            <div className='flex items-center gap-4 mb-4'>
+                                <div className={`p-3 rounded-lg ${skill.color}`}>
+                                    {skill.icon}
+                                </div>
+                                <h3 className='text-xl font-bold text-white heading-text tracking-wide'>{skill.title}</h3>
+                            </div>
+                            <p className='text-zinc-400 font-medium leading-relaxed pl-16 sub-head-text'>
+                                {skill.desc}
+                            </p>
+                        </div>
+                    ))}
                 </div>
+
             </div>
         </div>
     </div>

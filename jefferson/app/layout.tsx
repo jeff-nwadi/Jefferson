@@ -5,6 +5,11 @@ import { Playfair_Display } from "next/font/google";
 import { Kameron } from "next/font/google";
 import { Gasoek_One } from "next/font/google";
 import { Bebas_Neue } from "next/font/google";
+import { ThemeProvider } from "@/components/theme-provider";
+import { TransitionProvider } from "@/context/TransitionContext";
+import { TransitionOverlay } from "@/components/TransitionOverlay";
+import { SmoothScroll } from "@/components/SmoothScroll";
+
 
 const playfairDisplay = Playfair_Display({
     subsets: ["latin"],
@@ -110,13 +115,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={` ${satoshi.variable} ${BespokeSans.variable} ${BebasNeue.variable} ${gasoekOne.variable} ${kameron.variable} antialiased bg-[#EFEFEF]`}
+        className={` ${satoshi.variable} ${BespokeSans.variable} ${BebasNeue.variable} ${gasoekOne.variable} ${kameron.variable} antialiased bg-background text-foreground`}
       >
-        <Preloader />
-        <ScrollToTop />
-        {children}
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem={false}
+            forcedTheme="dark"
+            disableTransitionOnChange
+        >
+            <TransitionProvider>
+                <SmoothScroll />
+                <TransitionOverlay />
+                <Preloader />
+                <ScrollToTop />
+                {children}
+            </TransitionProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -44,8 +44,8 @@ export const Preloader = () => {
   if (!isVisible) return null;
 
   return (
-    <div ref={containerRef} className='fixed inset-0 z-[9999] bg-[#9369FF] flex justify-center items-center'>
-        <div className='flex gap-3 md:gap-5 overflow-hidden heading-text text-2xl md:text-5xl text-white'>
+    <div ref={containerRef} className='fixed inset-0 z-[9999] bg-background flex justify-center items-center'>
+        <div className='flex gap-3 md:gap-5 overflow-hidden heading-text text-4xl md:text-7xl text-white'>
             <span className='preloader-text translate-y-20 opacity-0 block'>Code</span>
             <span className='preloader-text translate-y-20 opacity-0 block'>with</span>
             <span className='preloader-text translate-y-20 opacity-0 block'>Jefferson</span>

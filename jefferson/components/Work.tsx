@@ -1,63 +1,65 @@
 "use client"
 import React, { useRef } from 'react'
-import { Briefcase } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { ArrowUpRight } from 'lucide-react'
+
+// Import existing images
 import Artgigs from '../images/Artgigs.png'
 import Plotline from '../images/Plotline.png'
 import Vura from '../images/Vura.png'
 import Waveroom from '../images/Waveroom.png'
 import Yardage from '../images/Yardage.png'
 import Jockify from '../images/jockify.png'
-import gsap from 'gsap'
-import { useGSAP } from '@gsap/react'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import Link from 'next/link'
 
 gsap.registerPlugin(ScrollTrigger)
 
-// ... existing imports
-
 const works = [
     {
-        title: "PLOTLINE - Storytelling Platform",
+        title: "Plotline",
+        category: "Storytelling Platform",
         image: Plotline,
-        color: "bg-[#F5E6E8]",
-        link: "https://plotline-psi.vercel.app/"
+        link: "https://plotline-psi.vercel.app/",
+        year: "2024"
     },
     {
-        title: "VURA - Virtual Frame Hanging",
+        title: "Vura",
+        category: "Virtual Frame Hanging",
         image: Vura,
-        color: "bg-[#E8F5E9]",
         link: "https://vura-nine.vercel.app/",
-        status: "Under Development"
+        year: "2023",
+        status: "Development"
     },
     {
-        title: "WAVEROOM - Social Playlist Sharing",
+        title: "Waveroom",
+        category: "Social Playlist Sharing",
         image: Waveroom,
-        color: "bg-[#FFF3E0]",
         link: "https://waveroom.vercel.app/",
-        collaboration: {
-            text: "with",
-            name: "Hendo10X",
-            url: "https://github.com/Hendo10X"
-        }
+        year: "2023"
     },
     {
-        title: "YARDAGE - E-commerce platform for Students",
+        title: "Yardage",
+        category: "E-commerce for Students",
         image: Yardage,
-        color: "bg-[#F3E5F5]",
-        link: "https://yardage-waitlist.vercel.app/"
+        link: "https://yardage-waitlist.vercel.app/",
+        year: "2023"
     },
     {
-        title: "JOCKIFY - AI Song Remixing",
+        title: "Jockify",
+        category: "AI Song Remixing",
         image: Jockify,
-        color: "bg-[#E3F2FD]",
         link: "https://jockify.vercel.app/",
-        collaboration: {
-            text: "with",
-            name: "Hendo10X",
-            url: "https://github.com/Hendo10X"
-        }
+        year: "2023"
+    },
+    {
+        title: "Artgigs",
+        category: "Freelance Marketplace",
+        image: Artgigs,
+        link: "#",
+        year: "2022"
     }
 ]
 
@@ -65,72 +67,85 @@ export const Work = () => {
   const containerRef = useRef<HTMLDivElement>(null)
 
   useGSAP(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top 80%",
-        end: "bottom 20%",
-        toggleActions: "play none none reverse"
-      }
+    const sections = gsap.utils.toArray('.project-card')
+    
+    sections.forEach((section: any) => {
+        gsap.from(section, {
+            y: 100,
+            opacity: 0,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: section,
+                start: "top 85%",
+                end: "top 20%",
+                toggleActions: "play none none reverse"
+            }
+        })
     })
-
-    tl.from(".work-header", {
-      y: 30,
-      opacity: 0,
-      duration: 0.6,
-      ease: "power2.out"
-    })
-    .from(".work-item", {
-      y: 50,
-      opacity: 0,
-      stagger: 0.1,
-      duration: 0.8,
-      ease: "power2.out"
-    }, "-=0.3")
 
   }, { scope: containerRef })
 
   return (
-    <div id='work' ref={containerRef} className='flex flex-col justify-center items-center py-10 md:py-20'>
-        <div className='max-w-[1200px] w-full px-4 md:px-8'>
-            <div className='flex items-center justify-center gap-3 md:gap-4 mb-10 md:mb-16 work-header'>
-                <div className='p-2 md:p-3 bg-white rounded-xl shadow-sm border border-gray-100 '>
-                    <Briefcase className='w-6 h-6 md:w-8 md:h-8 text-black delay-300 animate-[spin_10s_linear_infinite]' />
-                </div>
-                <h1 className='text-3xl md:text-4xl font-black text-gray-900 heading-text tracking-wider'>WORKS</h1>
+    <div id='work' ref={containerRef} className='w-full py-20 px-4 md:px-12 bg-background'>
+        
+        {/* Section Header */}
+        <div className='flex flex-col md:flex-row justify-between items-end mb-20 border-b border-border pb-8'>
+            <h2 className='heading-text text-[15vw] md:text-[8rem] leading-[0.8] text-primary/10 select-none absolute left-0 -z-10 opacity-50'>
+                WORKS
+            </h2>
+            <div className='z-10'>
+                <h3 className='text-sm font-bold tracking-widest uppercase text-muted-foreground mb-2 sub-head-text'>Selected Projects</h3>
+                <h2 className='text-4xl md:text-6xl font-black heading-text text-foreground'>
+                    FEATURED <br/> <span className='text-primary'>WORK</span>
+                </h2>
             </div>
-            
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
-                {works.map((work, index) => (
-                    <div key={index} className='group work-item'>
-                        <Link href={work.link} className='cursor-pointer block' target={work.link !== '#' ? '_blank' : '_self'}>
-                            <div className={`rounded-3xl overflow-hidden aspect-square relative mb-6 ${work.color} transition-transform duration-300 group-hover:-translate-y-2`}>
-                                <div className='absolute inset-0 flex items-center justify-center p-8'>
-                                    <Image
-                                        src={work.image}
-                                        alt={work.title}
-                                        className='object-cover rounded-xl shadow-lg transform transition-transform duration-500 group-hover:scale-105'
-                                    />
-                                </div>
-                            </div>
-                            <h3 className='text-sm font-bold text-gray-800 tracking-wider uppercase sub-head-text'>
-                                {work.title}
-                            </h3>
-                        </Link>
-                        {work.collaboration && (
-                            <div className='mt-2 text-xs text-gray-500 font-medium tracking-wide sub-head-text'>
-                                {work.collaboration.text} <a href={work.collaboration.url} target="_blank" className='underline hover:text-black transition-colors'>{work.collaboration.name}</a>
-                            </div>
-                        )}
-                        {work.status && (
-                            <div className='mt-2 text-xs text-amber-600 font-bold tracking-wide sub-head-text uppercase'>
-                                • {work.status}
-                            </div>
-                        )}
-                    </div>
-                ))}
+            <div className='mt-8 md:mt-0 max-w-sm text-right hidden md:block'>
+                <p className='text-muted-foreground font-medium sub-head-text'>
+                    A collection of digital experiences crafted with precision and passion.
+                </p>
             </div>
         </div>
+
+        {/* Projects Grid */}
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24'>
+            {works.map((work, index) => (
+                <Link 
+                    href={work.link} 
+                    key={index}
+                    target={work.link !== '#' ? '_blank' : '_self'}
+                    className={`group project-card flex flex-col gap-6 ${index % 2 !== 0 ? 'md:mt-32' : ''}`}
+                >
+                    <div className='relative w-full aspect-4/3 overflow-hidden rounded-2xl bg-secondary'>
+                        <div className='absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 mix-blend-multiply' />
+                        <Image
+                            src={work.image}
+                            alt={work.title}
+                            fill
+                            className='object-cover transform transition-transform duration-700 group-hover:scale-110'
+                        />
+                        <div className='absolute top-4 right-4 z-20 bg-card/90 p-3 rounded-full opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 delay-100'>
+                            <ArrowUpRight className='w-6 h-6 text-primary' />
+                        </div>
+                    </div>
+
+                    <div className='flex flex-col gap-2 border-l-2 border-border pl-6 transition-all duration-300 group-hover:border-primary'>
+                        <div className='flex justify-between items-center'>
+                            <h3 className='text-3xl font-bold heading-text text-foreground group-hover:text-primary transition-colors'>
+                                {work.title}
+                            </h3>
+                            <span className='text-sm font-bold text-muted-foreground border border-border px-2 py-1 rounded-md sub-head-text'>
+                                {work.year}
+                            </span>
+                        </div>
+                        <p className='text-lg text-muted-foreground font-medium sub-head-text'>
+                            {work.category}
+                        </p>
+                    </div>
+                </Link>
+            ))}
+        </div>
+        
     </div>
   )
 }

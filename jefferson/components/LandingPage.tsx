@@ -32,9 +32,9 @@ export const LandingPage = () => {
         clearProps: "all"
     }, "<") // Run concurrently
 
-    // Mouse Move Parallax
+    // Mouse Move Parallax - Only on desktop
     const handleMouseMove = (e: MouseEvent) => {
-        if (!imageRef.current) return
+        if (!imageRef.current || window.innerWidth < 768) return // Disable on mobile
         const { clientX, clientY } = e
         const { innerWidth, innerHeight } = window
         
@@ -49,7 +49,10 @@ export const LandingPage = () => {
         })
     }
 
-    window.addEventListener('mousemove', handleMouseMove)
+    if (window.matchMedia("(min-width: 768px)").matches) {
+        window.addEventListener('mousemove', handleMouseMove)
+    }
+    
     return () => window.removeEventListener('mousemove', handleMouseMove)
 
   }, { scope: containerRef })
@@ -57,11 +60,11 @@ export const LandingPage = () => {
   return (
     <div ref={containerRef} className='min-h-screen w-full flex flex-col justify-center items-center relative overflow-hidden pt-20 pb-10'>
         
-        {/* Background decorative elements */}
-        <div className="absolute top-1/4 -left-20 w-96 h-96 bg-primary/5 rounded-full blur-[100px] pointer-events-none mix-blend-screen" />
-        <div className="absolute bottom-1/4 -right-20 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
+        {/* Background decorative elements - Reduced blur/opacity for better mobile performance */}
+        <div className="absolute top-1/4 -left-20 w-64 h-64 md:w-96 md:h-96 bg-primary/5 rounded-full blur-[60px] md:blur-[100px] pointer-events-none mix-blend-screen" />
+        <div className="absolute bottom-1/4 -right-20 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-primary/5 rounded-full blur-[80px] md:blur-[120px] pointer-events-none mix-blend-screen" />
 
-        <div className='relative z-10 flex flex-col items-center text-center w-full max-w-[90vw]'>
+        <div className='relative z-10 flex flex-col items-center text-center w-full max-w-[95vw] md:max-w-[90vw]'>
             
             {/* Top Tagline */}
             <div className='hero-meta mb-8 inline-flex items-center gap-2 border border-border px-4 py-1.5 rounded-full bg-secondary/50 backdrop-blur-sm shadow-sm'>
@@ -71,28 +74,29 @@ export const LandingPage = () => {
 
             {/* Typography */}
             <div className='flex flex-col items-center leading-[0.85] tracking-tighter'>
-              <h1 className='hero-title heading-text text-[15vw] md:text-[12rem] lg:text-[14rem] text-primary/80 select-none mix-blend-overlay dark:mix-blend-normal'>
+              <h1 className='hero-title heading-text text-[18vw] md:text-[12rem] lg:text-[14rem] text-primary/80 select-none mix-blend-overlay dark:mix-blend-normal'>
                 FRONT
               </h1>
               
-              <div className='flex items-center justify-center gap-4 md:gap-12 w-full'>
-                <span className='hero-title heading-text text-[15vw] md:text-[12rem] lg:text-[14rem] text-muted-foreground/20 hover:text-primary transition-colors duration-700 select-none'>
+              <div className='flex items-center justify-center gap-2 md:gap-12 w-full'>
+                <span className='hero-title heading-text text-[18vw] md:text-[12rem] lg:text-[14rem] text-muted-foreground/20 hover:text-primary transition-colors duration-700 select-none'>
                   END
                 </span>
                 
                 {/* Image */}
-                <div className='hero-image relative w-[15vw] h-[15vw] md:w-32 md:h-32 lg:w-48 lg:h-48 shrink-0 border-4 border-background rounded-full overflow-hidden shadow-2xl z-20 hover:scale-105 transition-transform duration-500'>
+                <div className='hero-image relative w-[18vw] h-[18vw] md:w-32 md:h-32 lg:w-48 lg:h-48 shrink-0 border-2 md:border-4 border-background rounded-full overflow-hidden shadow-2xl z-20 hover:scale-105 transition-transform duration-500'>
                   <div ref={imageRef} className="w-full h-full relative rounded-full">
                     <Image 
                         src={Jeff} 
                         alt="Jefferson" 
                         fill
                         className='object-cover'
+                        sizes="(max-width: 768px) 20vw, 200px" // Optimization hint
                     />
                   </div>
                 </div>
                 
-                <span className='hero-title heading-text text-[15vw] md:text-[12rem] lg:text-[14rem] text-primary select-none drop-shadow-2xl'>
+                <span className='hero-title heading-text text-[18vw] md:text-[12rem] lg:text-[14rem] text-primary select-none drop-shadow-2xl'>
                   DEV
                 </span>
               </div>

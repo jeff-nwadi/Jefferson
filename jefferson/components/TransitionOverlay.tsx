@@ -12,11 +12,9 @@ export const TransitionOverlay = () => {
         if (transitionCallback) {
             const tl = gsap.timeline({
                 onComplete: () => {
-                    // 2. Execute Callback (e.g., Navigate/Scroll)
                     transitionCallback()
-                    setTransitionCallback(null) // Clear callback to prevent re-runs
+                    setTransitionCallback(null) 
 
-                    // 3. Animate Reveal (Entry)
                     gsap.delayedCall(0.1, () => {
                         gsap.to([".shutter-1", ".shutter-2", ".shutter-3", ".shutter-4"], {
                             scaleY: 0,
@@ -30,7 +28,6 @@ export const TransitionOverlay = () => {
                 }
             })
 
-            // 1. Animate Cover (Exit)
             tl.set([".shutter-1", ".shutter-2", ".shutter-3", ".shutter-4"], {
                 scaleY: 0,
                 transformOrigin: "bottom" 
@@ -42,7 +39,7 @@ export const TransitionOverlay = () => {
                 ease: "power3.inOut"
             })
         }
-    }, [transitionCallback]) // Dependency on callback existence triggers the sequence
+    }, [transitionCallback])
 
     return (
         <div ref={containerRef} className="fixed inset-0 pointer-events-none z-[99999]">

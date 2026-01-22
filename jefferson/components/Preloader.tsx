@@ -9,7 +9,6 @@ export const Preloader = () => {
   const [isVisible, setIsVisible] = useState(true)
 
   useGSAP(() => {
-    // Prevent scrolling during preloader
     document.body.style.overflow = 'hidden';
 
     const tl = gsap.timeline({
@@ -40,12 +39,17 @@ export const Preloader = () => {
         ease: "power4.inOut"
     }, "-=0.2")
 
+    return () => {
+        document.body.style.overflow = '';
+        tl.kill();
+    }
+
   }, { scope: containerRef })
 
   if (!isVisible) return null;
 
   return (
-    <div ref={containerRef} className='fixed inset-0 z-[9999] bg-background flex justify-center items-center'>
+    <div ref={containerRef} className='fixed inset-0 z-9999 bg-background flex justify-center items-center'>
         <div className='flex gap-3 md:gap-5 overflow-hidden heading-text text-4xl md:text-7xl text-white'>
             <span className='preloader-text translate-y-20 opacity-0 block'>Code</span>
             <span className='preloader-text translate-y-20 opacity-0 block'>with</span>

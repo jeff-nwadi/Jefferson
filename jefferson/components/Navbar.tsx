@@ -17,7 +17,7 @@ export const Navbar = () => {
 
   // Navbar scroll effect
   useEffect(() => {
-    let lastScrollY = window.scrollY
+    let ticking = false;
     
     const updateNavbar = () => {
       const currentScrollY = window.scrollY
@@ -29,7 +29,8 @@ export const Navbar = () => {
           borderBottom: '1px solid rgba(0,0,0,0.05)',
           paddingTop: '1rem',
           paddingBottom: '1rem',
-          duration: 0.3
+          duration: 0.3,
+          overwrite: true
         })
       } else {
         gsap.to(navRef.current, {
@@ -38,35 +39,51 @@ export const Navbar = () => {
           borderBottom: '1px solid transparent',
           paddingTop: '1.5rem',
           paddingBottom: '1.5rem',
-          duration: 0.3
+          duration: 0.3,
+          overwrite: true
         })
       }
-      lastScrollY = currentScrollY
+      ticking = false;
     }
 
-    window.addEventListener('scroll', updateNavbar)
-    return () => window.removeEventListener('scroll', updateNavbar)
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateNavbar)
+        ticking = true
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   // Animation for menu toggle
   useGSAP(() => {
     if (isOpen) {
+        // Stop any ongoing animations
+        gsap.killTweensOf(menuRef.current)
+        
         gsap.to(menuRef.current, {
-            height: 'auto',
+            height: '100vh', // Ensure full viewport height
             scaleY: 1,
             opacity: 1,
             duration: 0.5,
             ease: "power3.out",
             transformOrigin: "top"
         })
-        gsap.from(".mobile-nav-item", {
-            y: 20,
-            opacity: 0,
-            stagger: 0.05,
-            duration: 0.4,
-            delay: 0.1
-        })
+        gsap.fromTo(".mobile-nav-item", 
+            { y: 20, opacity: 0 },
+            {
+                y: 0,
+                opacity: 1,
+                stagger: 0.05,
+                duration: 0.4,
+                delay: 0.2
+            }
+        )
     } else {
+        gsap.killTweensOf(menuRef.current)
+        
         gsap.to(menuRef.current, {
             height: 0,
             scaleY: 0,
@@ -102,7 +119,7 @@ export const Navbar = () => {
             
             {/* Desktop Menu */}
             <div className='hidden md:flex items-center gap-8 mix-blend-mode-normal text-primary-foreground dark:text-foreground'>
-                {['Work', 'About', 'Contact'].map((item) => (
+                {['About', 'Work', 'Contact'].map((item) => (
                     <a 
                         key={item} 
                         href={`#${item.toLowerCase()}`}
@@ -131,7 +148,7 @@ export const Navbar = () => {
             className='absolute top-0 left-0 w-full bg-background border-b border-border shadow-2xl overflow-hidden origin-top opacity-0 h-0 flex flex-col justify-center items-center py-20'
         >
              <div className='flex flex-col items-center gap-6'>
-                {['Work', 'About', 'Contact'].map((item) => (
+                {['About', 'Work', 'Contact'].map((item) => (
                     <a 
                         href={`#${item.toLowerCase()}`}
                         key={item}

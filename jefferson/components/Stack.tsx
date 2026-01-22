@@ -8,8 +8,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 const techStack = [
     "JavaScript", "TypeScript", "React", "Next.js", "Node.js", "Express", 
-    "Tailwind CSS", "GSAP", "Framer Motion", "PostgreSQL", "MongoDB", 
-    "Git", "Docker", "AWS", "Three.js", "Figma", "Prisma"
+    "Tailwind CSS", "GSAP", "Framer Motion", "PostgreSQL", "MongoDB", "Git", "Figma", "Prisma"
 ]
 
 export const Stack = () => {

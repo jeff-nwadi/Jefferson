@@ -9,6 +9,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { TransitionProvider } from "@/context/TransitionContext";
 import { TransitionOverlay } from "@/components/TransitionOverlay";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import { LoaderProvider } from "@/context/LoaderContext";
 
 
 const playfairDisplay = Playfair_Display({
@@ -126,13 +127,15 @@ export default function RootLayout({
             forcedTheme="dark"
             disableTransitionOnChange
         >
-            <TransitionProvider>
-                <SmoothScroll />
-                <TransitionOverlay />
-                <Preloader />
-                <ScrollToTop />
-                {children}
-            </TransitionProvider>
+            <LoaderProvider>
+                <TransitionProvider>
+                    <SmoothScroll />
+                    <TransitionOverlay />
+                    <Preloader />
+                    <ScrollToTop />
+                    {children}
+                </TransitionProvider>
+            </LoaderProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -96,7 +96,7 @@ export const Navbar = () => {
   return (
     <div ref={containerRef} className='fixed top-0 left-0 w-full z-50'>
         <div ref={navRef} className='flex justify-between items-center px-6 md:px-12 lg:px-24 py-6 transition-all will-change-transform'>
-            <Link href="/" className='relative z-50 mix-blend-difference text-primary-foreground dark:text-foreground font-black text-2xl tracking-tighter uppercase heading-text'>
+            <Link href="/" className='relative z-50 mix-blend-difference text-primary-foreground dark:text-foreground font-black text-2xl tracking-wider uppercase heading-text'>
                 Jefferson
             </Link>
             

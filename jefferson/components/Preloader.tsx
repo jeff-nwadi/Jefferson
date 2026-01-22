@@ -2,6 +2,7 @@
 import React, { useRef, useState } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
+import { useLoader } from '@/context/LoaderContext'
 
 export const Preloader = () => {
   const containerRef = useRef<HTMLDivElement>(null)

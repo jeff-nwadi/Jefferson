@@ -8,11 +8,13 @@ import { cn } from "@/lib/utils"
 import { useDimensions } from "@/hooks/use-dimensions"
 
 interface PixelTrailProps {
-  pixelSize: number // px
-  fadeDuration?: number // ms
-  delay?: number // ms
+  pixelSize: number 
+  fadeDuration?: number
+  delay?: number 
   className?: string
   pixelClassName?: string
+  exclusionHeight?: number 
+  exclusionSelectors?: string[] 
 }
 
 const PixelTrail: React.FC<PixelTrailProps> = ({
@@ -21,6 +23,8 @@ const PixelTrail: React.FC<PixelTrailProps> = ({
   delay = 0,
   className,
   pixelClassName,
+  exclusionHeight = 0,
+  exclusionSelectors = [],
 }) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const dimensions = useDimensions(containerRef)
@@ -30,13 +34,21 @@ const PixelTrail: React.FC<PixelTrailProps> = ({
     const handleMouseMove = (e: MouseEvent) => {
       if (!containerRef.current) return
 
+      if (e.clientY < exclusionHeight) return
+
+      if (exclusionSelectors.length > 0) {
+        const target = e.target as HTMLElement
+        const isExcluded = exclusionSelectors.some(selector => 
+            target.closest(selector)
+        )
+        if (isExcluded) return
+      }
+
       const rect = containerRef.current.getBoundingClientRect()
       
-      // Calculate relative coordinates
       const xIndex = Math.floor((e.clientX - rect.left) / pixelSize)
       const yIndex = Math.floor((e.clientY - rect.top) / pixelSize)
 
-      // Only animate if the mouse is within the container bounds
       if (
         xIndex >= 0 &&
         xIndex < Math.ceil(dimensions.width / pixelSize) &&
@@ -57,7 +69,7 @@ const PixelTrail: React.FC<PixelTrailProps> = ({
     return () => {
       window.removeEventListener("mousemove", handleMouseMove)
     }
-  }, [dimensions.width, dimensions.height, pixelSize])
+  }, [dimensions.width, dimensions.height, pixelSize, exclusionHeight, exclusionSelectors])
 
   const columns = useMemo(
     () => Math.ceil(dimensions.width / pixelSize),
@@ -72,7 +84,7 @@ const PixelTrail: React.FC<PixelTrailProps> = ({
     <div
       ref={containerRef}
       className={cn(
-        "absolute inset-0 w-full h-full pointer-events-none", // Changed to none as interaction is handled globally
+        "absolute inset-0 w-full h-full pointer-events-none", 
         className
       )}
     >
@@ -115,7 +127,6 @@ const PixelDot: React.FC<PixelDotProps> = React.memo(
       })
     }, [])
 
-    // Attach the animatePixel function to the DOM element
     const ref = useCallback(
       (node: HTMLDivElement | null) => {
         if (node) {

@@ -6,7 +6,6 @@ import { Kameron } from "next/font/google";
 import { Gasoek_One } from "next/font/google";
 import { Bebas_Neue } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
-import { TransitionProvider } from "@/context/TransitionContext";
 import { TransitionOverlay } from "@/components/TransitionOverlay";
 import { SmoothScroll } from "@/components/SmoothScroll";
 
@@ -125,12 +124,10 @@ export default function RootLayout({
             forcedTheme="dark"
             disableTransitionOnChange
         >
-            <TransitionProvider>
-                <SmoothScroll />
-                <TransitionOverlay />
-                <ScrollToTop />
-                {children}
-            </TransitionProvider>
+            <SmoothScroll />
+            <TransitionOverlay />
+            <ScrollToTop />
+            {children}
         </ThemeProvider>
       </body>
     </html>

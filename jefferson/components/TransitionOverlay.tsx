@@ -2,11 +2,11 @@
 import React, { useRef,  } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
-import { useTransition } from '@/context/TransitionContext'
+import { useTransitionStore } from '@/lib/store/useTransitionStore'
 
 export const TransitionOverlay = () => {
     const containerRef = useRef<HTMLDivElement>(null)
-    const { transitionCallback, setTransitionCallback, finishTransition } = useTransition()
+    const { transitionCallback, setTransitionCallback, finishTransition } = useTransitionStore()
 
     useGSAP(() => {
         if (transitionCallback) {

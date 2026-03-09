@@ -2,10 +2,11 @@
 import React, { useRef, useState } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
-import { useLoader } from '@/context/LoaderContext'
+import { useLoaderStore } from '@/lib/store/useLoaderStore'
 
 export const Preloader = () => {
   const containerRef = useRef<HTMLDivElement>(null)
+  const { setIsLoading } = useLoaderStore()
   const [isVisible, setIsVisible] = useState(true)
 
   useGSAP(() => {

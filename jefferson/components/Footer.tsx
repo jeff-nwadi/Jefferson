@@ -39,7 +39,7 @@ export const Footer = () => {
                 
                 {/* Left: Big CTA */}
                 <div className="flex flex-col gap-8 footer-reveal w-full lg:w-3/5">
-                    <h2 className="heading-text text-[12vw] lg:text-[7rem] font-black uppercase leading-[0.85] tracking-tighter">
+                    <h2 className="heading-text text-[12vw] lg:text-[7rem] font-black uppercase leading-[0.85] tracking-wide">
                         Let&apos;s Work <br/> <span className="text-primary stroke-text">Together</span>
                     </h2>
                     <p className="sub-head-text text-zinc-400 text-lg md:text-2xl max-w-xl font-medium leading-relaxed">
@@ -49,7 +49,7 @@ export const Footer = () => {
                         <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-primary-foreground group-hover:scale-110 transition-transform duration-300">
                              <ArrowUpRight size={32} />
                         </div>
-                        <span className="text-3xl md:text-5xl font-bold heading-text hover:text-primary transition-colors duration-300">
+                        <span className="text-3xl md:text-5xl font-bold heading-text tracking-wide hover:text-primary transition-colors duration-300">
                             jefftech108@gmail.com
                         </span>
                     </Link>

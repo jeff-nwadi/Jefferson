@@ -5,9 +5,11 @@ import Image from 'next/image'
 import Jeff from '../images/jeff.jpg'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowDownRight } from 'lucide-react'
 import PixelTrail from '@/components/fancy/background/pixel-trail'
 
+gsap.registerPlugin(ScrollTrigger)
 
 export const LandingPage = () => {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -32,6 +34,29 @@ export const LandingPage = () => {
         ease: "back.out(1.2)",
         clearProps: "all"
     }, "<") // Run concurrently
+
+    // Parallax Scroll Effect
+    gsap.to(".hero-title", {
+        yPercent: -50,
+        ease: "none",
+        scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: true
+        }
+    })
+
+    gsap.to(".hero-image", {
+        yPercent: 20, // Move in opposite direction or slower for depth
+        ease: "none",
+        scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: true
+        }
+    })
 
     // Mouse Move Parallax - Only on desktop
     const handleMouseMove = (e: MouseEvent) => {
@@ -67,6 +92,8 @@ export const LandingPage = () => {
                 pixelSize={48} 
                 fadeDuration={600} 
                 pixelClassName="bg-white" 
+                exclusionHeight={120} // Navbar protection zone
+                exclusionSelectors={[".hero-title"]} // Don't trigger on hero text
             />
         </div>
 

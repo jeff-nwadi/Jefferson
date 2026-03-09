@@ -4,7 +4,7 @@ import Link from 'next/link'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { Menu, X } from 'lucide-react'
-import { useTransition } from '@/context/TransitionContext'
+import { useTransitionStore } from '@/lib/store/useTransitionStore'
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -12,7 +12,7 @@ export const Navbar = () => {
   const navRef = useRef<HTMLDivElement>(null)
   const menuRef = useRef<HTMLDivElement>(null)
   
-  const { triggerTransition } = useTransition()
+  const { triggerTransition } = useTransitionStore()
   const { contextSafe } = useGSAP({ scope: containerRef })
 
   // Navbar scroll effect

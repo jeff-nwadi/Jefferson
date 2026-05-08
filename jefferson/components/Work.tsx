@@ -7,24 +7,19 @@ import { useGSAP } from '@gsap/react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowUpRight } from 'lucide-react'
 
-// Import existing images
-import Artgigs from '../images/Artgigs.png'
+
+import Validly from '../images/Validly.png'
 import Plotline from '../images/Plotline.png'
 import Vura from '../images/Vura.png'
 import Waveroom from '../images/Waveroom.png'
 import Yardage from '../images/Yardage.png'
 import Jockify from '../images/jockify.png'
+import Onyx from '../images/Onyx.png'
+import Swintion from '../images/Swinton Pet Supplies.png'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const works = [
-    {
-        title: "Plotline",
-        category: "Storytelling Platform",
-        image: Plotline,
-        link: "https://plotline-psi.vercel.app/",
-        year: "2025"
-    },
     {
         title: "Vura",
         category: "Virtual Frame Hanging",
@@ -41,13 +36,6 @@ const works = [
         year: "2024"
     },
     {
-        title: "Yardage",
-        category: "E-commerce for Students",
-        image: Yardage,
-        link: "https://yardage-waitlist.vercel.app/",
-        year: "2025"
-    },
-    {
         title: "Jockify",
         category: "AI Song Remixing",
         image: Jockify,
@@ -55,11 +43,25 @@ const works = [
         year: "2025"
  },
     {
-        title: "Artgigs",
-        category: "Freelance Marketplace",
-        image: Artgigs,
-        link: "https://vaultjobs.vercel.app/",
-        year: "2025"
+        title: "Validly",
+        category: "AI Idea Validation Platform",
+        image: Validly,
+        link: "https://validly-sand.vercel.app/",
+        year: "2026",
+ },
+    {
+        title: "Onyx",
+        category: "Pet Tech marketplace",
+        image: Onyx,
+        link: "https://onyx-neon.vercel.app/",
+        year: "2026",
+ },
+    {
+        title: "Swintion Pet Supplies",
+        category: "Pet Supplies E-commerce",
+        image: Swintion,
+        link: "https://swintonpetsupplies.vercel.app/",
+        year: "2026",
  }
 ]
 
@@ -131,7 +133,7 @@ export const Work = () => {
 
                     <div className='flex flex-col gap-2 border-l-2 border-border pl-6 transition-all duration-300 group-hover:border-primary'>
                         <div className='flex justify-between items-center'>
-                            <h3 className='text-3xl font-bold heading-text text-foreground group-hover:text-primary transition-colors'>
+                            <h3 className='text-3xl font-bold heading-text tracking-wide text-foreground group-hover:text-primary transition-colors'>
                                 {work.title}
                             </h3>
                             <span className='text-sm font-bold text-muted-foreground border border-border px-2 py-1 rounded-md sub-head-text'>

@@ -10,22 +10,22 @@ import { ArrowUpRight } from 'lucide-react'
 
 import Validly from '../images/Validly.png'
 import Plotline from '../images/Plotline.png'
-import Vura from '../images/Vura.png'
+import Ledgr from '../images/Ledgr-hero.png'
 import Waveroom from '../images/Waveroom.png'
-import Yardage from '../images/Yardage.png'
+import PrinceCloset from '../images/prince-closet.png'
 import Jockify from '../images/jockify.png'
 import Onyx from '../images/Onyx.png'
-import Swintion from '../images/Swinton Pet Supplies.png'
+import Ile from '../images/ile-app.png'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const works = [
     {
-        title: "Vura",
-        category: "Virtual Frame Hanging",
-        image: Vura,
-        link: "https://vura-nine.vercel.app/",
-        year: "2025",
+        title: "Ledgr",
+        category: "Effortless daily bookkeeping.",
+        image: Ledgr,
+        link: "https://ledgr-mgxm-iota.vercel.app/",
+        year: "2026",
         status: "Development"
     },
     {
@@ -36,11 +36,11 @@ const works = [
         year: "2024"
     },
     {
-        title: "Jockify",
-        category: "AI Song Remixing",
-        image: Jockify,
-        link: "https://jockify.vercel.app/",
-        year: "2025"
+        title: "Prince Closet",
+        category: "Ecommerce",
+        image: PrinceCloset,
+        link: "https://prince-closet.vercel.app/",
+        year: "2026"
  },
     {
         title: "Validly",
@@ -57,10 +57,10 @@ const works = [
         year: "2026",
  },
     {
-        title: "Swintion Pet Supplies",
-        category: "Pet Supplies E-commerce",
-        image: Swintion,
-        link: "https://swintonpetsupplies.vercel.app/",
+        title: "Ile lagos",
+        category: "Fine Dining",
+        image: Ile,
+        link: "https://ile-app-ivory.vercel.app/",
         year: "2026",
  }
 ]

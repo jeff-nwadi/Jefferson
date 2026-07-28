@@ -84,7 +84,7 @@ export const LandingPage = () => {
   }, { scope: containerRef })
 
   return (
-    <div ref={containerRef} className='min-h-screen w-full flex flex-col justify-center items-center relative overflow-hidden pt-20 pb-10'>
+    <div id='home' ref={containerRef} className='min-h-screen w-full flex flex-col justify-center items-center relative overflow-hidden pt-20 pb-10'>
         
         {/* Pixel Trail Background - Desktop Only */}
         <div className='hidden md:block absolute inset-0 z-0'>
@@ -104,11 +104,6 @@ export const LandingPage = () => {
         <div className='relative z-10 flex flex-col items-center text-center w-full max-w-[95vw] md:max-w-[90vw]'>
             
             {/* Top Tagline */}
-            <div className='hero-meta mb-8 inline-flex items-center gap-2 border border-border px-4 py-1.5 rounded-full bg-secondary/50 backdrop-blur-sm shadow-sm'>
-              <span className='w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_10px_rgba(34,197,94,0.5)]'></span>
-              <span className='sub-head-text text-xs font-bold uppercase tracking-wider text-muted-foreground'>Available for freelance</span>
-            </div>
-
             {/* Typography */}
             <div className='flex flex-col items-center leading-[0.85] tracking-tighter'>
               <h1 className='hero-title heading-text text-[18vw] md:text-[12rem] lg:text-[14rem] text-primary/80 select-none mix-blend-overlay dark:mix-blend-normal'>

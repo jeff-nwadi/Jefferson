@@ -5,6 +5,7 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { Menu, X } from 'lucide-react'
 import { useTransitionStore } from '@/lib/store/useTransitionStore'
+import { useScrollStore } from '@/lib/store/useScrollStore'
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -13,49 +14,35 @@ export const Navbar = () => {
   const menuRef = useRef<HTMLDivElement>(null)
   
   const { triggerTransition } = useTransitionStore()
+  const isScrolled = useScrollStore(state => state.isScrolled)
   const { contextSafe } = useGSAP({ scope: containerRef })
 
-  // Navbar scroll effect
-  useEffect(() => {
-    let ticking = false;
-    
-    const updateNavbar = () => {
-      const currentScrollY = window.scrollY
-      
-      if (currentScrollY > 50) {
-        gsap.to(navRef.current, {
-          backgroundColor: 'rgba(10, 10, 10, 0.8)',
-          backdropFilter: 'blur(12px)',
-          borderBottom: '1px solid rgba(0,0,0,0.05)',
-          paddingTop: '1rem',
-          paddingBottom: '1rem',
-          duration: 0.3,
-          overwrite: true
-        })
-      } else {
-        gsap.to(navRef.current, {
-          backgroundColor: 'transparent',
-          backdropFilter: 'blur(0px)',
-          borderBottom: '1px solid transparent',
-          paddingTop: '1.5rem',
-          paddingBottom: '1.5rem',
-          duration: 0.3,
-          overwrite: true
-        })
-      }
-      ticking = false;
+  // Navbar scroll effect using GSAP and Zustand state
+  useGSAP(() => {
+    if (isScrolled) {
+      gsap.to(navRef.current, {
+        backgroundColor: 'rgba(10, 10, 10, 0.8)',
+        backdropFilter: 'blur(12px)',
+        borderBottom: '1px solid rgba(255,255,255,0.05)',
+        paddingTop: '1rem',
+        paddingBottom: '1rem',
+        duration: 0.3,
+        ease: "power2.out",
+        overwrite: true
+      })
+    } else {
+      gsap.to(navRef.current, {
+        backgroundColor: 'transparent',
+        backdropFilter: 'blur(0px)',
+        borderBottom: '1px solid transparent',
+        paddingTop: '1.5rem',
+        paddingBottom: '1.5rem',
+        duration: 0.3,
+        ease: "power2.out",
+        overwrite: true
+      })
     }
-
-    const onScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(updateNavbar)
-        ticking = true
-      }
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  }, [isScrolled])
 
   // Animation for menu toggle
   useGSAP(() => {
@@ -105,7 +92,11 @@ export const Navbar = () => {
     triggerTransition(() => {
         const element = document.getElementById(id)
         if (element) {
-            element.scrollIntoView({ behavior: 'auto', block: 'start' })
+            if ((window as any).lenis) {
+                (window as any).lenis.scrollTo(element, { immediate: true })
+            } else {
+                element.scrollIntoView({ behavior: 'auto', block: 'start' })
+            }
         }
     })
   }
@@ -113,13 +104,17 @@ export const Navbar = () => {
   return (
     <div ref={containerRef} className='fixed top-0 left-0 w-full z-50'>
         <div ref={navRef} className='flex justify-between items-center px-6 md:px-12 lg:px-24 py-6 transition-all will-change-transform'>
-            <Link href="/" className='relative z-50 mix-blend-difference text-primary-foreground dark:text-foreground font-black text-2xl tracking-wider uppercase heading-text'>
+            <Link 
+                href="#home" 
+                onClick={(e) => handleNavClick(e, 'home')}
+                className='relative z-50 mix-blend-difference text-primary-foreground dark:text-foreground font-black text-2xl tracking-wider uppercase heading-text'
+            >
                 Jefferson
             </Link>
             
             {/* Desktop Menu */}
             <div className='hidden md:flex items-center gap-8 mix-blend-mode-normal text-primary-foreground dark:text-foreground'>
-                {['About', 'Work', 'Contact'].map((item) => (
+                {['Home', 'About', 'Stack', 'Work', 'Contact'].map((item) => (
                     <a 
                         key={item} 
                         href={`#${item.toLowerCase()}`}
@@ -148,12 +143,12 @@ export const Navbar = () => {
             className='absolute top-0 left-0 w-full bg-background border-b border-border shadow-2xl overflow-hidden origin-top opacity-0 h-0 flex flex-col justify-center items-center py-20'
         >
              <div className='flex flex-col items-center gap-6'>
-                {['About', 'Work', 'Contact'].map((item) => (
+                {['Home', 'About', 'Stack', 'Work', 'Contact'].map((item) => (
                     <a 
                         href={`#${item.toLowerCase()}`}
                         key={item}
                         onClick={(e) => handleNavClick(e, item.toLowerCase())}
-                        className='text-4xl font-black uppercase tracking-tighter hover:text-primary transition-colors mobile-nav-item heading-text cursor-pointer'
+                        className='text-3xl font-black uppercase tracking-wide hover:text-primary transition-colors mobile-nav-item heading-text cursor-pointer'
                     >
                         {item}
                     </a>

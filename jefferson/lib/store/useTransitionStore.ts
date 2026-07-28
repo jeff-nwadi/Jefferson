@@ -13,7 +13,7 @@ export const useTransitionStore = create<TransitionStore>((set, get) => ({
     transitionCallback: null,
     triggerTransition: (callback: () => void) => {
         if (get().isTransitioning) return
-        set({ isTransitioning: true, transitionCallback: () => callback })
+        set({ isTransitioning: true, transitionCallback: callback })
     },
     setTransitionCallback: (cb: (() => void) | null) => set({ transitionCallback: cb }),
     finishTransition: () => set({ isTransitioning: false, transitionCallback: null }),
